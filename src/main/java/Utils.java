@@ -5,7 +5,11 @@ import java.util.List;
  * Created by pingao on 2019/9/7.
  */
 public class Utils {
-    public static void pprint(String p, String text, List<Integer> idx) {
+    public static void pprint(String p, String text, Search searcher) {
+        List<Integer> idx = searcher.search(p, text);
+        if (idx.isEmpty()) {
+            return;
+        }
         for (int i = 0; i < idx.size(); i++) {
             if (i == 0) {
                 System.out.println("0\t" + text);
@@ -15,7 +19,7 @@ public class Utils {
                 System.out.print(" ");
             }
             System.out.println(p);
-            System.out.println();
         }
+        System.out.println();
     }
 }
